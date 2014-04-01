@@ -265,21 +265,14 @@ class Smarty_View extends Kohana_View {
 		if (self::$_smarty_prototype === NULL)
 		{
 
-			// nearly everything can be done in the config file
-			if (Kohana::VERSION > '3.2')
-			{
-				$config = Kohana::$config->load('smarty');
-			}
-			else
-			{
-				$config = Kohana::config('smarty');
-			}
+			$config = Kohana::$config->load('smarty');
 
 			// locate Smarty.class.php
 			if (!($file = $config->smarty_class_file))
 			{
 				$file = Kohana::find_file('vendor', 'smarty/libs/Smarty.class');
 			}
+
 			require_once($file);
 
 			// save the location in case we have more than one Smarty version around
